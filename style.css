@@ -1,0 +1,28 @@
+*{
+    box-sizing: border-box;
+}
+main{
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+#form>label,#button{
+    font-size: 110%;
+}
+#search,#max-hits{
+    padding: 5px;
+    font-size: 110%;
+    text-align: center;
+    margin: 10px;
+}
+#max-hits{
+    max-width: 50px;
+}
+ul{
+    list-style-type: none;
+}
+li{
+    padding: 10px;
+}
+li>p,a{
+    font-size: 110%;
+}
