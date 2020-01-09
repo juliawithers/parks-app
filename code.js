@@ -2,118 +2,74 @@
 const apiKey='WytqvqKq4XvUQ0CNtAIgE9dWtfCA3NkX27BD5TwO';
 const baseURL='https://developer.nps.gov/api/v1/parks?';
 const geoSource = 'https://maps.googleapis.com/maps/api/geocode/json?'
-// render the results in browser
-function renderResults(responseJson,maxresults){
+
+// setup for the rendering. alters some existing html as well
+function renderResults(data,maxresults){
+    // clear the lists every time a new entry is made
     $('#returned-results').empty();
-    console.log(responseJson)
-    // let addresses = createAddress(responseJson,maxresults);
 
-    for(let i=0;i<maxresults;i++){
-        // let ident = addresses[0];
-        // let obj = addresses[1];
-        // console.log(addresses)
-        // console.log(obj)
-        // console.log(ident[0])
-        // console.log(typeof obj)
-        // let address = getAddresses(responseJson[1])
-        // console.log(adddress);
-        $('#returned-results').append(
-            `<li class="needClass">
-            <p>${i+1}: <strong>${responseJson.data[i].fullName}</strong>(<a href= ${responseJson.data[i].url} target="_blank">Link</a>)</p>
-            <p><em>Description</em>: ${responseJson.data[i].description}</p><br>
-            </li>`)            
-        // <p class="address"><em>Address: <em>Address: <script></script>${address[0].results[0].formatted_address}</em></p>
-        // for(let j=0;j<ident.length;j++){
-        //     if(ident[j]=== i+1){
-        //         $('.needClass').append(`<p class="address"><em>Address: <em>Address: <script></script>${obj[0].results[0].formatted_address}</em></p>`);
-        //     }
-        // }
+    // show how many results we should expect to see
+    $('.results').html(`Results: ${data.length}`)
 
-    };
+    // must designate iteration length by input data
+    if(data.length <= maxresults){
+        for(let i=0;i<data.length;i++){
+            renderPark(data[i])            
+        };
+    }
+    else if (data.length > maxresults){
+        for(let i=0;i<maxresults;i++){
+            renderPark(data[i])            
+        };
+    }
 
-    // full name, description, website url
-    if(responseJson.length === 0){
+    // if no data is available show a response
+    if(data.length === 0){
         $('#other').text(`No Results Found`)
-    }  
+    } 
+
+    // remove hidden
     $('.results').removeClass('hidden');
 }
-function getAddresses(responseJson){
-    let input = responseJson.data.latLong;
-    let inputSplit = input.split(",")
-    let latArr = inputSplit[0].split(":")
-    let lat=latArr[1];
-    let longArr = inputSplit[1].split(":")
-    let long = longArr[1];
-    const geoURL = geoSource+`latlng=${latArr},${longArr}&key=AIzaSyCDm1-bN6rsQQoues6UA64S9O0TdCe_jE0`;
-    console.log(geoURL)
-        fetch(geoURL)
-        .then(add => {
-            if (add.ok){
-                return add.json()
-            }
-            throw new Error (add.Status)})
-        .then(add => console.log(add))
-        .catch(err=>{
-            $('#error').text(`Something went wrong: ${error.message}`);
-            console.log(error.message)
-        }); 
-        return add   //will this return add from the whole function?
+
+// render the html code
+function renderPark(parkInfo){
+    let parkHTML = ''
+    getAddresses(parkInfo.latLong)
+    .then(add => {
+        parkHTML = generateParkItemHTML(parkInfo,add)
+        $('#returned-results').append(parkHTML)})    
 }
-// create the address with reverse geocoding
-// function createAddress(responseJson,maxresults){
-//     // responseJson.data[i].latLong
-//     let latArray = [];
-//     let longArray = [];
-//     for(let i=0;i<maxresults;i++){
+
+// generate the html code for the li's
+function generateParkItemHTML(parkInfo, add){
+    return `<li class="needClass">
+    <p><strong>${parkInfo.fullName}</strong>(<a href= ${parkInfo.url} target="_blank">Link</a>)</p>
+    <p><em>Description</em>: ${parkInfo.description}</p><br>
+    <p class="address"><em><em>Address: ${add}</em></p>
+    </li>`
+}
+
+// fetch the address using reverse geocoding
+async function getAddresses(input){
+    // if the string is not empty, split it
+    if (input !== ""){
+        let inputSplit = input.toString().split(",")
+        let latArr = inputSplit[0].split(":")
+        let lat=latArr[1];
+        let longArr = inputSplit[1].split(":")
+        let long = longArr[1];
+        const geoURL = geoSource+`latlng=${lat},${long}&key=AIzaSyCDm1-bN6rsQQoues6UA64S9O0TdCe_jE0`;
         
-//             let input = responseJson.data[i].latLong;
-//             console.log(input)
-//         if(input.length >0){ 
-//             let inputSplit = input.split(",")
-
-//             let latArr = inputSplit[0].split(":")
-//             let lat=latArr[1];
-//             latArray.push(lat)
-//             let longArr = inputSplit[1].split(":")
-//             let long = longArr[1];
-//             longArray.push(long)
-//         }   
-//         if(input.length === 0){
-//             latArray.push('none')
-//             longArray.push('none')
-//         }
-//     }
-//     console.log(latArray)
-//     console.log(longArray)
-    
-//     const geoSource = 'https://maps.googleapis.com/maps/api/geocode/json?'
-//     let result = [];
-//     let list = [];
-//     let combination =[];
-//     for(let i=0;i<latArray.length;i++){
-//         if(latArray[i] !== "none"){
-//             const geoURL = geoSource+`latlng=${latArray[i]},${longArray[i]}&key=AIzaSyCDm1-bN6rsQQoues6UA64S9O0TdCe_jE0`;
-//             fetch(geoURL)
-//             .then(add => {
-//                 if (add.ok){
-//                     return add.json()
-//                 }
-//                 throw new Error (add.Status)})
-//             .then(data => console.log(data))
-//             .catch(err=>{
-//                 $('#error').text(`Something went wrong: ${error.message}`);
-//                 console.log(error.message)
-
-//             });
-//             list.push(i+1);
-//         }
-//     }
-//     console.log(list)
-//     console.log(result)
-//     combination.push(list,result)
-//     console.log(combination)
-//     return combination;
-// }
+        const response = await fetch(geoURL)
+        const result = await response.json()
+        return result.results[0].formatted_address;
+    }
+    // if the string is empty, return No address listed
+    else{
+        return "No address listed"
+    }
+}
 
 // Map the parameters
 function mapParams(params){
@@ -123,7 +79,7 @@ function mapParams(params){
 }
 
 // fetch the data
-function getRepos(stateSearch, maxresults){
+function getParks(stateSearch, maxresults){
     const params = {
         stateCode: stateSearch,
         limit: maxresults,
@@ -142,7 +98,7 @@ function getRepos(stateSearch, maxresults){
         return response.json()
         }
         throw new Error (response.Status)})
-    .then(responseJson=> renderResults(responseJson, maxresults))
+    .then(responseJson=> renderResults(responseJson.data, maxresults))
     .catch(err=>{
         $('#error').text(`Something went wrong: ${err.message}`);
         console.log(err.message)
@@ -156,7 +112,7 @@ function watchForm(){
         e.preventDefault();
         const stateSearch=$('#search').val().toLowerCase();
         const maxresults=$('#max-hits').val();
-        getRepos(stateSearch,maxresults);
+        getParks(stateSearch,maxresults);
     })
 }
 
