@@ -30,3 +30,7 @@ li{
 li>p,a{
     font-size: 110%;
 }
+input{
+    margin: 10px;
+    font-size: 110%;
+}
