@@ -8,73 +8,223 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     </head>
     <body>
-        <main>
+        <main class="parks">
             <h1>National Parks - Park Search</h1>
             <form id="form">
-                <label for="search-state">Search by State:</label><br>
+                <p>Search by State: Feel free to choose multiple!</p><br>
                 <fieldset id="search">
-                    <input type="checkbox" value="AL" name="state">Alabama
-                    <input type="checkbox" value="AK" name="state">Alaska
-                    <input type="checkbox" value="AZ" name="state">Arizona
-                    <input type="checkbox" value="AR" name="state">Arkansas
-                    <input type="checkbox" value="CA" name="state">California
-                    <input type="checkbox" value="CO" name="state">Colorado
-                    <input type="checkbox" value="CT" name="state">Connecticut
-                    <input type="checkbox" value="DE" name="state">Delaware
-                    <input type="checkbox" value="DC" name="state">District Of Columbia
-                    <input type="checkbox" value="FL" name="state">Florida
-                    <input type="checkbox" value="GA" name="state">Georgia
-                    <input type="checkbox" value="HI" name="state">Hawaii
-                    <input type="checkbox" value="ID" name="state">Idaho
-                    <input type="checkbox" value="IL" name="state">Illinois
-                    <input type="checkbox" value="IN" name="state">Indiana
-                    <input type="checkbox" value="IA" name="state">Iowa
-                    <input type="checkbox" value="KS" name="state">Kansas
-                    <input type="checkbox" value="KY" name="state">Kentucky
-                    <input type="checkbox" value="LA" name="state">Louisiana
-                    <input type="checkbox" value="ME" name="state">Maine
-                    <input type="checkbox" value="MD" name="state">Maryland
-                    <input type="checkbox" value="MA" name="state">Massachusetts
-                    <input type="checkbox" value="MI" name="state">Michigan
-                    <input type="checkbox" value="MN" name="state">Minnesota
-                    <input type="checkbox" value="MS" name="state">Mississippi
-                    <input type="checkbox" value="MO" name="state">Missouri
-                    <input type="checkbox" value="MT" name="state">Montana
-                    <input type="checkbox" value="NE" name="state">Nebraska
-                    <input type="checkbox" value="NV" name="state">Nevada
-                    <input type="checkbox" value="NH" name="state">New Hampshire
-                    <input type="checkbox" value="NJ" name="state">New Jersey
-                    <input type="checkbox" value="NM" name="state">New Mexico
-                    <input type="checkbox" value="NY" name="state">New York
-                    <input type="checkbox" value="NC" name="state">North Carolina
-                    <input type="checkbox" value="ND" name="state">North Dakota
-                    <input type="checkbox" value="OH" name="state">Ohio
-                    <input type="checkbox" value="OK" name="state">Oklahoma
-                    <input type="checkbox" value="OR" name="state">Oregon
-                    <input type="checkbox" value="PA" name="state">Pennsylvania
-                    <input type="checkbox" value="RI" name="state">Rhode Island
-                    <input type="checkbox" value="SC" name="state">South Carolina
-                    <input type="checkbox" value="SD" name="state">South Dakota
-                    <input type="checkbox" value="TN" name="state">Tennessee
-                    <input type="checkbox" value="TX" name="state">Texas
-                    <input type="checkbox" value="UT" name="state">Utah
-                    <input type="checkbox" value="VT" name="state">Vermont
-                    <input type="checkbox" value="VA" name="state">Virginia
-                    <input type="checkbox" value="WA" name="state">Washington
-                    <input type="checkbox" value="WV" name="state">West Virginia
-                    <input type="checkbox" value="WI" name="state">Wisconsin
-                    <input type="checkbox" value="WY" name="state">Wyoming
+                    <label>Alabama
+                        <input type="checkbox" value="AL" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Alaska
+                        <input type="checkbox" value="AK" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Arizona
+                        <input type="checkbox" value="AZ" name="state"
+                        ><span class="checkmark"></span>
+                    </label>
+                    <label>Arkansas
+                        <input type="checkbox" value="AR" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>California
+                        <input type="checkbox" value="CA" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Colorado
+                        <input type="checkbox" value="CO" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Connecticut
+                        <input type="checkbox" value="CT" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Delaware
+                        <input type="checkbox" value="DE" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>District Of Columbia
+                        <input type="checkbox" value="DC" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Florida
+                        <input type="checkbox" value="FL" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Georgia
+                        <input type="checkbox" value="GA" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Hawaii
+                        <input type="checkbox" value="HI" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Idaho
+                        <input type="checkbox" value="ID" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Illinois
+                        <input type="checkbox" value="IL" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Indiana
+                        <input type="checkbox" value="IN" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Iowa
+                        <input type="checkbox" value="IA" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Kansas
+                        <input type="checkbox" value="KS" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Kentucky
+                        <input type="checkbox" value="KY" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Louisiana
+                        <input type="checkbox" value="LA" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Maine
+                        <input type="checkbox" value="ME" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Maryland
+                        <input type="checkbox" value="MD" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Massachusetts
+                        <input type="checkbox" value="MA" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Michigan
+                        <input type="checkbox" value="MI" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Minnesota
+                        <input type="checkbox" value="MN" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Mississippi
+                        <input type="checkbox" value="MS" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Missouri
+                        <input type="checkbox" value="MO" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Montana
+                        <input type="checkbox" value="MT" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Nebraska
+                        <input type="checkbox" value="NE" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Nevada
+                        <input type="checkbox" value="NV" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>New Hampshire
+                        <input type="checkbox" value="NH" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>New Jersey
+                        <input type="checkbox" value="NJ" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>New Mexico
+                        <input type="checkbox" value="NM" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>New York
+                        <input type="checkbox" value="NY" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>North Carolina
+                        <input type="checkbox" value="NC" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>North Dakota
+                        <input type="checkbox" value="ND" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Ohio
+                        <input type="checkbox" value="OH" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Oklahoma
+                        <input type="checkbox" value="OK" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Oregon
+                        <input type="checkbox" value="OR" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Pennsylvania
+                        <input type="checkbox" value="PA" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Rhode Island
+                        <input type="checkbox" value="RI" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>South Carolina
+                        <input type="checkbox" value="SC" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>South Dakota
+                        <input type="checkbox" value="SD" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Tennessee
+                        <input type="checkbox" value="TN" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Texas
+                        <input type="checkbox" value="TX" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Utah
+                        <input type="checkbox" value="UT" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Vermont
+                        <input type="checkbox" value="VT" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Virginia
+                        <input type="checkbox" value="VA" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Washington
+                        <input type="checkbox" value="WA" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>West Virginia
+                        <input type="checkbox" value="WV" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Wisconsin
+                        <input type="checkbox" value="WI" name="state">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>Wyoming
+                        <input type="checkbox" value="WY" name="state">
+                        <span class="checkmark"></span>
+                    </label>
                 </fieldset>
                 <br>
-                <label for="max-hits">Adjust number of results returned:</label><br>
+                <p>Adjust number of results returned: If multiple are selected, the number will search input quantity per state (eg. Nebraska and Iowa are selected with input of 10 - will return 10 parks per state). Some states my have a limited number of parks listed.</p><br>
                 <input type="text" id="max-hits" value="10"><br>
                 <input type="submit" value="Submit" id="button">
             </form>
             <section id="results" class="hidden">
-                <h2 class="results">Results</h2>
-                <ul id="returned-results">
-                    <!-- load results -->
-                </ul>
+                <!-- Load results -->
             </section>
             <p id="error"></p>
             <p id="other"></p>
